@@ -75,10 +75,11 @@ window.openVideo = function(videoElement) {
 
 window.closeModal = function() {
     modal.style.display = 'none';
-    player.src = '';
+    player.src = ''; // Arrête la vidéo en réinitialisant la source
     document.body.style.overflow = 'auto';
 }
 
+// Fermeture avec un clic en dehors de la modale ou avec la touche Echap
 window.addEventListener('click', (event) => {
     if (event.target === modal) {
         closeModal();
@@ -92,145 +93,9 @@ window.addEventListener('keydown', (event) => {
 });
 
 
-// --- Logique du Ciel Étoilé et du Phénix en 3D (AVEC THREE.JS) ---
-
-let scene, camera, renderer, starField, phoenixPlaceholder;
-let mouseX = 0, mouseY = 0;
-let windowHalfX = window.innerWidth / 2;
-let windowHalfY = window.innerHeight / 2;
-
-function initThreeJS() {
-    const starsBackgroundContainer = document.getElementById('stars-background');
-
-    // 1. SCÈNE
-    scene = new THREE.Scene();
-    
-    // 2. CAMÉRA
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 5; // Place la caméra à 5 unités de distance du centre
-
-    // 3. RENDERER (Moteur de rendu)
-    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); 
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    starsBackgroundContainer.appendChild(renderer.domElement);
-
-    // 4. ÉTOILES EN 3D
-    const starGeometry = new THREE.BufferGeometry();
-    const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.1, sizeAttenuation: true });
-    const starVertices = [];
-    for (let i = 0; i < 1500; i++) { // 1500 étoiles pour une densité spatiale
-        // Distribution aléatoire dans un cube de 200x200x200
-        const x = (Math.random() - 0.5) * 200;
-        const y = (Math.random() - 0.5) * 200;
-        const z = (Math.random() - 0.5) * 200;
-        starVertices.push(x, y, z);
-    }
-    starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
-    starField = new THREE.Points(starGeometry, starMaterial);
-    scene.add(starField);
-    
-    // 5. PHÉNIX VIRTUEL (Placeholder en 3D)
-    // C'est votre boîte temporaire, en attente de votre modèle 3D
-    const phoenixGeometry = new THREE.BoxGeometry(1, 1, 1);
-    const phoenixMaterial = new THREE.MeshBasicMaterial({ color: 0xffa500, wireframe: true }); 
-    phoenixPlaceholder = new THREE.Mesh(phoenixGeometry, phoenixMaterial);
-    phoenixPlaceholder.position.set(0, 0, 0); 
-    scene.add(phoenixPlaceholder);
-
-
-    // --- CODE POUR CHARGER VOTRE VRAI MODÈLE 3D (.gltf) ---
-    /*
-    Pour charger un modèle 3D, vous aurez besoin d'importer le GLTFLoader. 
-    Comme nous sommes sur un CDN simple, vous devriez chercher un autre CDN pour THREE.GLTFLoader 
-    ou le télécharger en local. 
-    
-    Exemple de structure pour le jour où vous avez le fichier GLTF (par exemple 'modeles/phenix.gltf'):
-    
-    const loader = new THREE.GLTFLoader();
-    loader.load( 
-        'modeles/phenix.gltf', // <-- Remplacez par le chemin vers votre modèle
-        function ( gltf ) {
-            // Le modèle chargé est ici : gltf.scene
-            gltf.scene.scale.set(0.5, 0.5, 0.5); // Ajustez la taille
-            gltf.scene.position.set(0, 0, 0); // Positionnez-le
-            gltf.scene.name = "RealPhoenix";
-            scene.add( gltf.scene );
-            
-            // On retire le placeholder une fois le vrai modèle chargé
-            scene.remove(phoenixPlaceholder);
-            
-            // Si le modèle a des animations :
-            // mixer = new THREE.AnimationMixer( gltf.scene );
-            // gltf.animations.forEach((clip) => {
-            //     mixer.clipAction(clip).play();
-            // });
-        }, 
-        // Fonction optionnelle pour la progression du chargement
-        undefined, 
-        // Fonction si le chargement échoue
-        function ( error ) {
-            console.error( 'Erreur de chargement du modèle 3D du Phénix:', error );
-        }
-    );
-    */
-    // ------------------------------------------------------------------
-
-
-    // Gestion du redimensionnement de la fenêtre
-    window.addEventListener('resize', onWindowResize, false);
-    document.addEventListener('mousemove', onDocumentMouseMove, false);
-}
-
-function onWindowResize() {
-    windowHalfX = window.innerWidth / 2;
-    windowHalfY = window.innerHeight / 2;
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-}
-
-function onDocumentMouseMove(event) {
-    // Rend le mouvement de la souris plus doux et moins intense
-    mouseX = (event.clientX - windowHalfX) * 0.005; 
-    mouseY = (event.clientY - windowHalfY) * 0.005;
-}
-
-function animateThreeJS() {
-    requestAnimationFrame(animateThreeJS);
-
-    // Mouvement continu des étoiles (rotation de la galaxie)
-    if (starField) {
-        starField.rotation.y += 0.0003; 
-        starField.rotation.x += 0.0001;
-    }
-
-    // Mouvement du Phénix Placeholder (simulation de vol)
-    if (phoenixPlaceholder) {
-        // Rotation sur lui-même
-        phoenixPlaceholder.rotation.x += 0.01;
-        phoenixPlaceholder.rotation.y += 0.005;
-        
-        // Mouvement fluide et sinusoïdal pour simuler le vol
-        phoenixPlaceholder.position.x = Math.sin(Date.now() * 0.0005) * 2;
-        phoenixPlaceholder.position.y = Math.cos(Date.now() * 0.0004) * 1;
-        phoenixPlaceholder.position.z = Math.sin(Date.now() * 0.0003) * 3;
-    }
-    
-    // Contrôle de la caméra (Interactivité : parallaxe avec la souris)
-    camera.position.x += (mouseX - camera.position.x) * 0.01;
-    camera.position.y += (-mouseY - camera.position.y) * 0.01;
-    camera.lookAt(scene.position); // La caméra vise toujours le centre de la scène
-
-    renderer.render(scene, camera);
-}
-
-
 // --- Initialisation au chargement de la page ---
 document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('megabrainLang') || 'fr'; 
     setLang(savedLang);
-    
-    // Lance le moteur 3D
-    initThreeJS(); 
-    animateThreeJS(); 
+    // Le code 3D a été retiré. Seule l'initialisation de la langue est nécessaire ici.
 });
