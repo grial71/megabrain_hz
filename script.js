@@ -63,12 +63,6 @@ window.setLang = function(lang) {
     localStorage.setItem('megabrainLang', lang);
 };
 
-// Fonction pour charger la langue lors du chargement de la page
-document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('megabrainLang') || 'fr'; 
-    setLang(savedLang);
-});
-
 
 // --- Logique d'affichage des vidéos ---
 
@@ -79,7 +73,7 @@ const player = document.getElementById('youtube-player');
 window.openVideo = function(videoElement) {
     const videoId = videoElement.getAttribute('data-video-id');
     if (videoId) {
-        // Crée l'URL d'intégration YouTube avec l'option autoplay=1 pour démarrer immédiatement
+        // Crée l'URL d'intégration YouTube avec l'option autoplay=1
         const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&showinfo=0&iv_load_policy=3`;
         player.src = embedUrl;
         modal.style.display = 'flex'; // Affiche la modale
@@ -105,4 +99,61 @@ window.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && modal.style.display === 'flex') {
         closeModal();
     }
+});
+
+
+// --- Logique du Ciel Étoilé (NOUVEAU) ---
+
+function createStarsBackground() {
+    const starContainer = document.getElementById('stars-background');
+    const numberOfStars = 150; // Nombre d'étoiles
+    
+    for (let i = 0; i < numberOfStars; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        
+        // 1. Taille aléatoire
+        const size = Math.random() * 2 + 1; 
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        
+        // 2. Position aléatoire
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        
+        // 3. Délai et durée d'animation aléatoire
+        star.style.animationDelay = `${Math.random() * 5}s`;
+        star.style.animationDuration = `${Math.random() * 3 + 2}s`; 
+        
+        starContainer.appendChild(star);
+    }
+}
+
+const starsBackground = document.getElementById('stars-background');
+
+// Amélioration : Mouvement des Étoiles avec la Souris (Interactivité)
+window.addEventListener('mousemove', (e) => {
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+
+    const offsetX = (e.clientX - centerX) / centerX;
+    const offsetY = (e.clientY - centerY) / centerY;
+
+    const intensity = 5; // Force du mouvement parallaxe
+    
+    starsBackground.style.transform = `translate(
+        ${offsetX * intensity}px, 
+        ${offsetY * intensity}px
+    )`;
+});
+
+
+// --- Initialisation au chargement de la page ---
+
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('megabrainLang') || 'fr'; 
+    setLang(savedLang);
+    
+    // Appel pour créer le ciel étoilé
+    createStarsBackground(); 
 });
