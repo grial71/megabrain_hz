@@ -8,8 +8,13 @@
   <link rel="icon" href="https://files.catbox.moe/5r4i7k.ico" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
+<!-- ⭐ Étoiles animées si activées dans le CSS -->
+<div class="stars"></div>
+
+<!-- 🎌 Sélecteur de langue -->
 <div class="lang-selector">
   <button onclick="setLang('fr')" data-lang="fr">FR</button>
   <button onclick="setLang('es')" data-lang="es">ES</button>
@@ -26,6 +31,7 @@
   </nav>
 </header>
 
+<!-- INTRO -->
 <div class="container intro">
   <h2 data-tr="IntroTitle">Créé par Michel Quinones</h2>
   <p data-tr="IntroText">
@@ -34,10 +40,11 @@
   </p>
 </div>
 
+<!-- EXPLICATION -->
 <div class="container intro">
   <h2 data-tr="ExplainTitle">Comment fonctionnent ces fréquences ?</h2>
   <p data-tr="ExplainText">
-    <!-- Texte remplacé par JS -->
+    <!-- Le script remplace ce texte automatiquement -->
   </p>
 </div>
 
@@ -88,3 +95,33 @@
   <div class="video-item" data-video-id="KwfU4YUjhs4" onclick="openVideo(this)">
     <h3>963 Hz – Méditation profonde</h3>
     <p>Idéal pour les pratiques de recentrage et d’apaisement.</p>
+  </div>
+</div>
+
+<!-- 🌙 DON -->
+<div class="container donate">
+  <h3 data-tr="DonateTitle">Soutenir le projet :</h3>
+  <a href="https://www.paypal.me/michelquinones" target="_blank">
+    <button data-tr="DonateButton">Soutenir via PayPal</button>
+  </a>
+  <p><small data-tr="DonateNote">Merci d’envoyer en mode « Amis et proches ».</small></p>
+</div>
+
+<footer data-tr="FooterText">
+  MEGABRAIN © 2025 – Créé par Michel Quinones
+</footer>
+
+<!-- 🎥 MODALE YOUTUBE -->
+<div id="videoModal" class="modal">
+  <a href="#" onclick="closeVideo(event)">✕</a>
+  <iframe
+    id="ytPlayer"
+    src=""
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
