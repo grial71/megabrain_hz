@@ -203,6 +203,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const saved = (typeof localStorage !== "undefined" &&
     localStorage.getItem("megabrain_lang")) || "fr";
   setLang(saved);
+
+  currentLang = saved;
+
 });
 
 // ==========================
@@ -398,3 +401,4 @@ document.addEventListener("DOMContentLoaded", () => {
     startChat();
   }
 });
+
