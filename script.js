@@ -1,5 +1,5 @@
 // ==========================
-//   PACKS DE TRADUCTION
+//   PACKS DE TRADUCTION UI
 // ==========================
 const translations = {
   fr: {
@@ -16,8 +16,8 @@ const translations = {
     ExplainTitle: "Comment fonctionnent ces fréquences ?",
     ExplainText:
       "<strong>1. Ondes cérébrales</strong> : certaines musiques utilisent des battements binauraux ou isochrones pour encourager des états de relaxation ou de concentration.<br><br>" +
-      "<strong>2. Fréquences spécifiques</strong> : 174 Hz, 285 Hz, 396 Hz, 40 Hz, etc. sont associées à détente, clarté mentale ou libération émotionnelle.<br><br>" +
-      "<strong>3. Utilisation</strong> : ces sons ne remplacent aucun traitement médical, mais peuvent aider à se relaxer, méditer ou mieux dormir.",
+      "<strong>2. Fréquences spécifiques</strong> : 174 Hz, 285 Hz, 396 Hz, 40 Hz, etc. sont souvent associées à la détente, la clarté mentale ou la libération émotionnelle.<br><br>" +
+      "<strong>3. Utilisation</strong> : ces sons ne remplacent PAS un traitement médical, mais peuvent être un support pour se relaxer, méditer, se concentrer ou mieux dormir.",
 
     DonateTitle: "Soutenir le projet :",
     DonateButton: "Soutenir via PayPal",
@@ -38,13 +38,13 @@ const translations = {
 
     ExplainTitle: "¿Cómo funcionan estas frecuencias?",
     ExplainText:
-      "<strong>1. Ondas cerebrales</strong>: algunos sonidos usan ritmos binaurales o isocrónicos para favorecer estados de calma o claridad.<br><br>" +
-      "<strong>2. Frecuencias específicas</strong>: 174 Hz, 285 Hz, 396 Hz, 40 Hz… se asocian a relajación, claridad y liberación emocional.<br><br>" +
-      "<strong>3. Uso</strong>: no sustituyen tratamientos médicos, pero pueden ayudarte a relajarte, enfocarte o dormir mejor.",
+      "<strong>1. Ondas cerebrales</strong>: algunos audios usan ritmos binaurales o isocrónicos para favorecer estados de relajación o concentración.<br><br>" +
+      "<strong>2. Frecuencias específicas</strong>: 174 Hz, 285 Hz, 396 Hz, 40 Hz, etc. se asocian a calma, claridad mental o liberación emocional.<br><br>" +
+      "<strong>3. Uso</strong>: no sustituyen tratamientos médicos, pero pueden ayudarte a relajarte, meditar o dormir mejor.",
 
     DonateTitle: "Apoyar el proyecto:",
     DonateButton: "Apoyar vía PayPal",
-    DonateNote: "Gracias por enviar en modo «Amigos y familiares».",
+    DonateNote: "Gracias por enviar como «Amigos y familiares».",
     FooterText: "MEGABRAIN © 2025 – Creado por Michel Quinones",
   },
 
@@ -62,8 +62,8 @@ const translations = {
     ExplainTitle: "How do these frequencies work?",
     ExplainText:
       "<strong>1. Brainwaves</strong>: some tracks use binaural or isochronic beats to create relaxed or focused states.<br><br>" +
-      "<strong>2. Specific frequencies</strong>: 174 Hz, 285 Hz, 396 Hz, 40 Hz… calm the body, clear the mind or help emotional release.<br><br>" +
-      "<strong>3. Use</strong>: these sounds do NOT replace medical care, but can support relaxation, focus and sleep.",
+      "<strong>2. Specific frequencies</strong>: 174 Hz, 285 Hz, 396 Hz, 40 Hz, etc. are associated with calm, clarity and emotional release.<br><br>" +
+      "<strong>3. Usage</strong>: these sounds do NOT replace medical care, but can help you relax, meditate, focus or sleep better.",
 
     DonateTitle: "Support the project:",
     DonateButton: "Support via PayPal",
@@ -73,11 +73,117 @@ const translations = {
 };
 
 // ==========================
-//      TRADUCTION
+//   CHATBOT – TEXTES PAR LANGUE
+//   Coach pédagogue futuriste 🧠✨
+// ==========================
+const chatbotTexts = {
+  fr: {
+    intro:
+      "Bonjour, je suis ton <strong>Coach MEGABRAIN</strong> 🧠✨, un pédagogue un peu futuriste. De quoi as-tu le plus besoin maintenant ?",
+    relaxAdvice:
+      "Parfait. Pour la <strong>relaxation</strong>, commence par 174 Hz ou 285 Hz. Installe-toi confortablement, ferme les yeux et laisse le corps se relâcher.",
+    focusAdvice:
+      "Super. Pour la <strong>concentration</strong>, les fréquences Gamma (40 Hz) sont idéales pour étudier ou travailler avec clarté mentale.",
+    meditateAdvice:
+      "Très bon choix. Pour la <strong>méditation</strong>, 963 Hz aide à entrer dans un état intérieur plus profond et calme.",
+    explainText:
+      "Les fréquences servent à <strong>influencer ton état intérieur</strong> :<br>" +
+      "• 174 Hz : détente physique<br>" +
+      "• 285 Hz : harmonie & équilibre<br>" +
+      "• 396 Hz : libération émotionnelle<br>" +
+      "• 40 Hz : concentration, mémoire, clarté<br>" +
+      "• 963 Hz : méditation profonde, intériorité",
+    gotoRelax: "Je t’ai emmené à la section <strong>Relaxation</strong>.",
+    gotoFocus: "Je t’ai emmené à la section <strong>Concentration</strong>.",
+    gotoMeditation: "Je t’ai emmené à la section <strong>Méditation</strong>.",
+    buttons: {
+      relax: "Me relaxer",
+      focus: "Me concentrer",
+      meditate: "Méditer",
+      explain: "Comprendre les fréquences",
+      goto_relax: "Aller à Relaxation",
+      goto_focus: "Voir les musiques Focus",
+      goto_meditation: "Voir les musiques Méditation",
+      restart: "Autre besoin",
+      close: "Fermer le coach"
+    }
+  },
+
+  es: {
+    intro:
+      "Hola, soy tu <strong>Coach MEGABRAIN</strong> 🧠✨, un guía pedagógico un poco futurista. ¿Qué necesitas ahora mismo?",
+    relaxAdvice:
+      "Perfecto. Para la <strong>relajación</strong>, empieza con 174 Hz o 285 Hz. Siéntate cómodo, cierra los ojos y deja que el cuerpo se suelte.",
+    focusAdvice:
+      "Genial. Para la <strong>concentración</strong>, las frecuencias Gamma (40 Hz) son muy útiles para estudiar o trabajar con claridad.",
+    meditateAdvice:
+      "Muy buena elección. Para la <strong>meditación</strong>, 963 Hz ayuda a entrar en un estado interior profundo y tranquilo.",
+    explainText:
+      "Las frecuencias sirven para <strong>influir en tu estado interior</strong>:<br>" +
+      "• 174 Hz: relajación física<br>" +
+      "• 285 Hz: armonía y equilibrio<br>" +
+      "• 396 Hz: liberación emocional<br>" +
+      "• 40 Hz: concentración, memoria, claridad<br>" +
+      "• 963 Hz: meditación profunda, interioridad",
+    gotoRelax: "Te he llevado a la sección de <strong>Relajación</strong>.",
+    gotoFocus: "Te he llevado a la sección de <strong>Concentración</strong>.",
+    gotoMeditation: "Te he llevado a la sección de <strong>Meditación</strong>.",
+    buttons: {
+      relax: "Relajarme",
+      focus: "Concentrarme",
+      meditate: "Meditar",
+      explain: "Entender las frecuencias",
+      goto_relax: "Ir a Relajación",
+      goto_focus: "Ver músicas Focus",
+      goto_meditation: "Ver músicas Meditación",
+      restart: "Otra necesidad",
+      close: "Cerrar el coach"
+    }
+  },
+
+  en: {
+    intro:
+      "Hi, I'm your <strong>MEGABRAIN Coach</strong> 🧠✨, a slightly futuristic guide. What do you need most right now?",
+    relaxAdvice:
+      "Great. For <strong>relaxation</strong>, start with 174 Hz or 285 Hz. Sit comfortably, close your eyes and let your body release tension.",
+    focusAdvice:
+      "Nice. For <strong>focus</strong>, Gamma frequencies (40 Hz) are powerful to study or work with mental clarity.",
+    meditateAdvice:
+      "Excellent choice. For <strong>meditation</strong>, 963 Hz helps you drop into a deeper, quieter inner state.",
+    explainText:
+      "Frequencies are used to <strong>influence your inner state</strong>:<br>" +
+      "• 174 Hz: physical relaxation<br>" +
+      "• 285 Hz: harmony & balance<br>" +
+      "• 396 Hz: emotional release<br>" +
+      "• 40 Hz: focus, memory, clarity<br>" +
+      "• 963 Hz: deep meditation, inner work",
+    gotoRelax: "I’ve taken you to the <strong>Relaxation</strong> section.",
+    gotoFocus: "I’ve taken you to the <strong>Focus</strong> section.",
+    gotoMeditation: "I’ve taken you to the <strong>Meditation</strong> section.",
+    buttons: {
+      relax: "Relax",
+      focus: "Focus",
+      meditate: "Meditate",
+      explain: "Understand the frequencies",
+      goto_relax: "Go to Relaxation",
+      goto_focus: "See Focus tracks",
+      goto_meditation: "See Meditation tracks",
+      restart: "Something else",
+      close: "Close coach"
+    }
+  }
+};
+
+let currentLang = "fr";
+
+// ==========================
+//      TRADUCTION UI
 // ==========================
 window.setLang = function (lang) {
   const pack = translations[lang];
   if (!pack) return;
+
+  currentLang = lang;
 
   document.querySelectorAll("[data-tr]").forEach((el) => {
     const key = el.getAttribute("data-tr");
@@ -88,15 +194,16 @@ window.setLang = function (lang) {
     .querySelectorAll(".lang-selector button")
     .forEach((b) => b.classList.toggle("active", b.dataset.lang === lang));
 
-  localStorage.setItem("megabrain_lang", lang);
+  try {
+    localStorage.setItem("megabrain_lang", lang);
+  } catch (e) {}
 };
 
-// appliquer la langue au chargement
 document.addEventListener("DOMContentLoaded", () => {
-  const saved = localStorage.getItem("megabrain_lang") || "fr";
+  const saved = (typeof localStorage !== "undefined" &&
+    localStorage.getItem("megabrain_lang")) || "fr";
   setLang(saved);
 });
-
 
 // ==========================
 //     MUSIQUE DE FOND
@@ -106,23 +213,28 @@ const musicBtn = document.getElementById("music-control");
 const icon = document.getElementById("music-icon");
 
 let musicEnabled = false;
+let wasPlayingBeforeVideo = false;
 
-musicBtn.addEventListener("click", () => {
-  if (!musicEnabled) {
-    bgMusic.volume = 0.35;
-    bgMusic.play().catch(() => {});
-    icon.textContent = "🔊";
-    musicEnabled = true;
-  } else {
-    bgMusic.pause();
-    icon.textContent = "🔇";
-    musicEnabled = false;
-  }
-});
-
+if (musicBtn && bgMusic && icon) {
+  musicBtn.addEventListener("click", () => {
+    if (!musicEnabled) {
+      bgMusic.volume = 0.35;
+      bgMusic.play().then(() => {
+        icon.textContent = "🔊";
+        musicEnabled = true;
+      }).catch(() => {
+        // si le navigateur bloque l’autoplay, on ne fait rien
+      });
+    } else {
+      bgMusic.pause();
+      icon.textContent = "🔇";
+      musicEnabled = false;
+    }
+  });
+}
 
 // ==========================
-//   LECTURE VIDÉOS YOUTUBE
+//     YOUTUBE PLAYER
 // ==========================
 window.openVideo = function (el) {
   const id = el.dataset.videoId;
@@ -130,34 +242,47 @@ window.openVideo = function (el) {
 
   const modal = document.getElementById("videoModal");
   const frame = document.getElementById("ytPlayer");
+  if (!modal || !frame) return;
 
-  // couper musique
-  if (musicEnabled) bgMusic.pause();
+  // mémoriser état musique
+  wasPlayingBeforeVideo = musicEnabled && !bgMusic.paused;
+  if (wasPlayingBeforeVideo) {
+    bgMusic.pause();
+  }
 
-  frame.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+  frame.src =
+    "https://www.youtube.com/embed/" +
+    id +
+    "?autoplay=1&rel=0&modestbranding=1";
+
   modal.style.display = "flex";
 };
 
 window.closeVideo = function (event) {
   if (event) event.preventDefault();
-
   const modal = document.getElementById("videoModal");
   const frame = document.getElementById("ytPlayer");
+  if (!modal || !frame) return;
 
   frame.src = "";
   modal.style.display = "none";
 
-  if (musicEnabled) bgMusic.play();
+  // relancer musique de fond si elle était en cours
+  if (wasPlayingBeforeVideo && musicEnabled) {
+    bgMusic.play().catch(() => {});
+  }
 };
 
 document.addEventListener("click", (e) => {
   const modal = document.getElementById("videoModal");
-  if (e.target === modal) closeVideo();
+  if (!modal) return;
+  if (e.target === modal) {
+    window.closeVideo();
+  }
 });
 
-
 // ==========================
-//     CHATBOT PEDAGOGIQUE
+//   CHATBOT PÉDAGOGIQUE
 // ==========================
 let chatState = "start";
 
@@ -167,24 +292,29 @@ const chatClose = document.getElementById("chatbot-close");
 const chatMessages = document.getElementById("chatbot-messages");
 const chatQuick = document.getElementById("chatbot-quick");
 
-// Ouvrir/fermer
-if (chatToggle) {
+function getPack() {
+  return chatbotTexts[currentLang] || chatbotTexts["fr"];
+}
+
+// ouvrir / fermer
+if (chatToggle && chatWindow) {
   chatToggle.addEventListener("click", () => {
     chatWindow.style.display =
       chatWindow.style.display === "flex" ? "none" : "flex";
-
-    if (chatWindow.style.display === "flex") startChat();
+    if (chatWindow.style.display === "flex") {
+      startChat();
+    }
   });
 }
 
-if (chatClose) {
+if (chatClose && chatWindow) {
   chatClose.addEventListener("click", () => {
     chatWindow.style.display = "none";
   });
 }
 
-// Ajouter un message
 function addChatMessage(text, from = "bot") {
+  if (!chatMessages) return;
   const div = document.createElement("div");
   div.classList.add("chat-msg", from);
   div.innerHTML = text;
@@ -192,107 +322,79 @@ function addChatMessage(text, from = "bot") {
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-// Boutons rapides
-function setQuickButtons(buttons) {
+function setQuickButtons(buttonKeys) {
+  if (!chatQuick) return;
+  const pack = getPack();
   chatQuick.innerHTML = "";
-  buttons.forEach((btn) => {
+
+  buttonKeys.forEach((key) => {
+    const label = (pack.buttons && pack.buttons[key]) || key;
     const b = document.createElement("button");
     b.classList.add("chat-quick-btn");
-    b.textContent = btn.label;
-    b.addEventListener("click", () => handleChoice(btn.value));
+    b.textContent = label;
+    b.addEventListener("click", () => handleChoice(key, label));
     chatQuick.appendChild(b);
   });
 }
 
-// Démarrage chatbot
 function startChat() {
+  if (!chatMessages) return;
+  const pack = getPack();
   chatMessages.innerHTML = "";
   chatState = "start";
-
-  addChatMessage(
-    "Bonjour, je suis ton <strong>Coach MEGABRAIN</strong> 🧠.<br>Comment puis-je t’aider aujourd’hui ?"
-  );
-
-  setQuickButtons([
-    { label: "Me relaxer", value: "relax" },
-    { label: "Me concentrer", value: "focus" },
-    { label: "Méditer", value: "meditate" },
-    { label: "Comprendre les fréquences", value: "explain" },
-  ]);
+  addChatMessage(pack.intro);
+  setQuickButtons(["relax", "focus", "meditate", "explain"]);
 }
 
+function handleChoice(choiceKey, userLabel) {
+  const pack = getPack();
+  addChatMessage(userLabel, "user");
 
-// Gestion des choix utilisateur
-function handleChoice(choice) {
-  addChatMessage(choice, "user");
+  if (chatState === "start") {
+    if (choiceKey === "relax") {
+      chatState = "relax1";
+      addChatMessage(pack.relaxAdvice);
+      setQuickButtons(["goto_relax", "restart"]);
+    } else if (choiceKey === "focus") {
+      chatState = "focus1";
+      addChatMessage(pack.focusAdvice);
+      setQuickButtons(["goto_focus", "restart"]);
+    } else if (choiceKey === "meditate") {
+      chatState = "med1";
+      addChatMessage(pack.meditateAdvice);
+      setQuickButtons(["goto_meditation", "restart"]);
+    } else if (choiceKey === "explain") {
+      chatState = "explain1";
+      addChatMessage(pack.explainText);
+      setQuickButtons(["relax", "focus", "meditate"]);
+    }
+  } else {
+    if (choiceKey === "goto_relax") {
+      const s = document.getElementById("relax");
+      if (s) s.scrollIntoView({ behavior: "smooth" });
+      addChatMessage(pack.gotoRelax);
+      setQuickButtons(["restart", "close"]);
+    } else if (choiceKey === "goto_focus") {
+      const s = document.getElementById("focus");
+      if (s) s.scrollIntoView({ behavior: "smooth" });
+      addChatMessage(pack.gotoFocus);
+      setQuickButtons(["restart", "close"]);
+    } else if (choiceKey === "goto_meditation") {
+      const s = document.getElementById("meditation");
+      if (s) s.scrollIntoView({ behavior: "smooth" });
+      addChatMessage(pack.gotoMeditation);
+      setQuickButtons(["restart", "close"]);
+    } else if (choiceKey === "restart") {
+      startChat();
+    } else if (choiceKey === "close") {
+      if (chatWindow) chatWindow.style.display = "none";
+    }
+  }
+}
 
-  if (choice === "relax") {
-    addChatMessage(
-      "Pour la <strong>relaxation</strong>, commence par 174 Hz ou 285 Hz."
-    );
-    setQuickButtons([
-      { label: "Voir Relaxation", value: "goto_relax" },
-      { label: "Autre", value: "restart" },
-    ]);
-  }
-
-  else if (choice === "focus") {
-    addChatMessage(
-      "Pour la <strong>concentration</strong>, les 40 Hz Gamma sont excellents."
-    );
-    setQuickButtons([
-      { label: "Voir Focus", value: "goto_focus" },
-      { label: "Autre", value: "restart" },
-    ]);
-  }
-
-  else if (choice === "meditate") {
-    addChatMessage(
-      "Pour la <strong>méditation</strong>, essaie 963 Hz."
-    );
-    setQuickButtons([
-      { label: "Voir Méditation", value: "goto_meditation" },
-      { label: "Autre", value: "restart" },
-    ]);
-  }
-
-  else if (choice === "explain") {
-    addChatMessage(
-      "Voici un résumé clair des fréquences :<br>" +
-        "• 174 Hz : détente profonde<br>" +
-        "• 285 Hz : harmonie<br>" +
-        "• 396 Hz : libération émotionnelle<br>" +
-        "• 40 Hz : concentration<br>" +
-        "• 963 Hz : méditation intense"
-    );
-    setQuickButtons([
-      { label: "Relaxation", value: "relax" },
-      { label: "Concentration", value: "focus" },
-      { label: "Méditation", value: "meditate" },
-    ]);
-  }
-
-  // Redirections
-  else if (choice === "goto_relax") {
-    document.getElementById("relax")?.scrollIntoView({ behavior: "smooth" });
-    addChatMessage("Je t’ai emmené à la section Relaxation.");
-    setQuickButtons([{ label: "Fermer", value: "close" }]);
-  }
-  else if (choice === "goto_focus") {
-    document.getElementById("focus")?.scrollIntoView({ behavior: "smooth" });
-    addChatMessage("Section Concentration affichée.");
-    setQuickButtons([{ label: "Fermer", value: "close" }]);
-  }
-  else if (choice === "goto_meditation") {
-    document.getElementById("meditation")?.scrollIntoView({ behavior: "smooth" });
-    addChatMessage("Section Méditation affichée.");
-    setQuickButtons([{ label: "Fermer", value: "close" }]);
-  }
-
-  else if (choice === "close") {
-    chatWindow.style.display = "none";
-  }
-  else if (choice === "restart") {
+// si la fenêtre était déjà ouverte au chargement
+document.addEventListener("DOMContentLoaded", () => {
+  if (chatWindow && chatWindow.style.display === "flex") {
     startChat();
   }
-}
+});
