@@ -332,3 +332,11 @@ body.livres-page header h1{
     font-size:1.2em;
     color:var(--vert);
 }
+
+/* Empêche le zoom automatique sur la page des livres */
+body.livres-page {
+    -webkit-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+}
+
+
