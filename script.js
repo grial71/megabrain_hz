@@ -1,177 +1,298 @@
 // ==========================
-// TRADUCTIONS (inchangées – restent en local)
+//   PACKS DE TRADUCTION
 // ==========================
-const translations = { /* ← colle ici exactement le bloc translations que tu avais avant */ };
+const translations = {
+  fr: {
+    MEGABRAIN: "MEGABRAIN",
+    NavRelax: "Relaxation",
+    NavFocus: "Concentration",
+    NavMeditation: "Méditation",
+    NavBooks: "Livres",
+
+    IntroTitle: "Créé par Michel Quinones",
+    IntroText:
+      "Sélection de fréquences sonores et de musiques conçues pour favoriser la relaxation, la concentration et la méditation profonde.",
+
+    ExplainTitle: "Comment fonctionnent ces fréquences ?",
+    ExplainText:
+      "<strong>1. Ondes cérébrales</strong> : certaines musiques utilisent des battements binauraux ou isochrones pour encourager des états de relaxation ou de concentration.<br><br>" +
+      "<strong>2. Fréquences spécifiques</strong> : 174 Hz, 285 Hz, 396 Hz, 40 Hz, etc. sont associées à détente, clarté mentale ou libération émotionnelle.<br><br>" +
+      "<strong>3. Utilisation</strong> : ces sons ne remplacent aucun traitement médical, mais peuvent aider à se relaxer, méditer ou mieux dormir.",
+
+    DonateTitle: "Soutenir le projet :",
+    DonateButton: "Soutenir via PayPal",
+    DonateNote: "Merci d’envoyer en mode « Amis et proches ».",
+    FooterText: "MEGABRAIN © 2025 – Créé par Michel Quinones",
+  },
+
+  es: {
+    MEGABRAIN: "MEGABRAIN",
+    NavRelax: "Relajación",
+    NavFocus: "Concentración",
+    NavMeditation: "Meditación",
+    NavBooks: "Libros",
+
+    IntroTitle: "Creado por Michel Quinones",
+    IntroText:
+      "Selección de frecuencias sonoras y músicas pensadas para favorecer la relajación, la concentración y la meditación profunda.",
+
+    ExplainTitle: "¿Cómo funcionan estas frecuencias?",
+    ExplainText:
+      "<strong>1. Ondas cerebrales</strong>: algunos sonidos usan ritmos binaurales o isocrónicos para favorecer estados de calma o claridad.<br><br>" +
+      "<strong>2. Frecuencias específicas</strong>: 174 Hz, 285 Hz, 396 Hz, 40 Hz… se asocian a relajación, claridad y liberación emocional.<br><br>" +
+      "<strong>3. Uso</strong>: no sustituyen tratamientos médicos, pero pueden ayudarte a relajarte, enfocarte o dormir mejor.",
+
+    DonateTitle: "Apoyar el proyecto:",
+    DonateButton: "Apoyar vía PayPal",
+    DonateNote: "Gracias por enviar en modo «Amigos y familiares».",
+    FooterText: "MEGABRAIN © 2025 – Creado por Michel Quinones",
+  },
+
+  en: {
+    MEGABRAIN: "MEGABRAIN",
+    NavRelax: "Relaxation",
+    NavFocus: "Focus",
+    NavMeditation: "Meditation",
+    NavBooks: "Books",
+
+    IntroTitle: "Created by Michel Quinones",
+    IntroText:
+      "A selection of frequencies and music designed to support relaxation, focus, and deep meditation.",
+
+    ExplainTitle: "How do these frequencies work?",
+    ExplainText:
+      "<strong>1. Brainwaves</strong>: some tracks use binaural or isochronic beats to create relaxed or focused states.<br><br>" +
+      "<strong>2. Specific frequencies</strong>: 174 Hz, 285 Hz, 396 Hz, 40 Hz… calm the body, clear the mind or help emotional release.<br><br>" +
+      "<strong>3. Use</strong>: these sounds do NOT replace medical care, but can support relaxation, focus and sleep.",
+
+    DonateTitle: "Support the project:",
+    DonateButton: "Support via PayPal",
+    DonateNote: "Please send using «Friends & Family».",
+    FooterText: "MEGABRAIN © 2025 – Created by Michel Quinones",
+  }
+};
 
 // ==========================
-// TRADUCTION (inchangée)
+//      TRADUCTION
 // ==========================
 window.setLang = function (lang) {
-  const pack = translations[lang] || translations.fr;
-  document.querySelectorAll("[data-tr]").forEach(el => {
+  const pack = translations[lang];
+  if (!pack) return;
+
+  document.querySelectorAll("[data-tr]").forEach((el) => {
     const key = el.getAttribute("data-tr");
     if (pack[key]) el.innerHTML = pack[key];
   });
-  document.querySelectorAll(".lang-selector button")
-    .forEach(b => b.classList.toggle("active", b.dataset.lang === lang));
-  localStorage.setItem("megabrain_lang", lang); // langue = donnée anonyme autorisée
+
+  document
+    .querySelectorAll(".lang-selector button")
+    .forEach((b) => b.classList.toggle("active", b.dataset.lang === lang));
+
+  localStorage.setItem("megabrain_lang", lang);
 };
+
+// appliquer la langue au chargement
 document.addEventListener("DOMContentLoaded", () => {
   const saved = localStorage.getItem("megabrain_lang") || "fr";
   setLang(saved);
 });
 
+
 // ==========================
-// MUSIQUE + VIDÉOS (inchangées)
+//     MUSIQUE DE FOND
 // ==========================
 const bgMusic = document.getElementById("bg-music");
 const musicBtn = document.getElementById("music-control");
 const icon = document.getElementById("music-icon");
+
 let musicEnabled = false;
-musicBtn?.addEventListener("click", () => {
+
+musicBtn.addEventListener("click", () => {
   if (!musicEnabled) {
     bgMusic.volume = 0.35;
     bgMusic.play().catch(() => {});
-    icon.textContent = "Loudspeaker";
+    icon.textContent = "🔊";
     musicEnabled = true;
   } else {
     bgMusic.pause();
-    icon.textContent = "Muted";
+    icon.textContent = "🔇";
     musicEnabled = false;
   }
 });
 
+
+// ==========================
+//   LECTURE VIDÉOS YOUTUBE
+// ==========================
 window.openVideo = function (el) {
   const id = el.dataset.videoId;
   if (!id) return;
+
   const modal = document.getElementById("videoModal");
   const frame = document.getElementById("ytPlayer");
+
+  // couper musique
   if (musicEnabled) bgMusic.pause();
-  frame.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+
+  frame.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
   modal.style.display = "flex";
 };
-window.closeVideo = function (e) {
-  if (e) e.preventDefault();
-  document.getElementById("ytPlayer").src = "";
-  document.getElementById("videoModal").style.display = "none";
+
+window.closeVideo = function (event) {
+  if (event) event.preventDefault();
+
+  const modal = document.getElementById("videoModal");
+  const frame = document.getElementById("ytPlayer");
+
+  frame.src = "";
+  modal.style.display = "none";
+
   if (musicEnabled) bgMusic.play();
 };
-document.addEventListener("click", e => {
-  if (e.target === document.getElementById("videoModal")) closeVideo();
+
+document.addEventListener("click", (e) => {
+  const modal = document.getElementById("videoModal");
+  if (e.target === modal) closeVideo();
 });
 
-// ==========================
-// CHATBOT 100 % LOCAL & RGPD
-// ==========================
-const chatToggle   = document.getElementById("chatbot-toggle");
-const chatWindow   = document.getElementById("chatbot-window");
-const chatClose    = document.getElementById("chatbot-close");
-const chatMessages = document.getElementById("chatbot-messages");
-const chatQuick    = document.getElementById("chatbot-quick");
 
+// ==========================
+//     CHATBOT PEDAGOGIQUE
+// ==========================
+let chatState = "start";
+
+const chatToggle = document.getElementById("chatbot-toggle");
+const chatWindow = document.getElementById("chatbot-window");
+const chatClose = document.getElementById("chatbot-close");
+const chatMessages = document.getElementById("chatbot-messages");
+const chatQuick = document.getElementById("chatbot-quick");
+
+// Ouvrir/fermer
 if (chatToggle) {
   chatToggle.addEventListener("click", () => {
-    chatWindow.classList.toggle("visible");
-    if (chatWindow.classList.contains("visible") && chatMessages.children.length === 0) {
-      startChat();
-    }
+    chatWindow.style.display =
+      chatWindow.style.display === "flex" ? "none" : "flex";
+
+    if (chatWindow.style.display === "flex") startChat();
   });
 }
-if (chatClose) chatClose.addEventListener("click", () => chatWindow.classList.remove("visible"));
 
-function addMessage(text, from = "bot") {
+if (chatClose) {
+  chatClose.addEventListener("click", () => {
+    chatWindow.style.display = "none";
+  });
+}
+
+// Ajouter un message
+function addChatMessage(text, from = "bot") {
   const div = document.createElement("div");
-  div.className = `chat-msg ${from}`;
+  div.classList.add("chat-msg", from);
   div.innerHTML = text;
   chatMessages.appendChild(div);
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
+// Boutons rapides
 function setQuickButtons(buttons) {
   chatQuick.innerHTML = "";
-  buttons.forEach(b => {
-    const btn = document.createElement("button");
-    btn.className = "chat-quick-btn";
-    btn.textContent = b.label;
-    btn.onclick = () => {
-      addMessage(b.label, "user");
-      handleInput(b.value);
-    };
-    chatQuick.appendChild(btn);
+  buttons.forEach((btn) => {
+    const b = document.createElement("button");
+    b.classList.add("chat-quick-btn");
+    b.textContent = btn.label;
+    b.addEventListener("click", () => handleChoice(btn.value));
+    chatQuick.appendChild(b);
   });
 }
 
-// Création du champ texte (une seule fois)
-function createInput() {
-  if (document.getElementById("chat-input-area")) return;
-  const div = document.createElement("div");
-  div.id = "chat-input-area";
-  div.innerHTML = `
-    <input type="text" id="chat-user-input" placeholder="Pose-moi une question..." autocomplete="off">
-    <button id="chat-send-btn">Envoyer</button>
-  `;
-  chatWindow.appendChild(div);
-
-  const input = document.getElementById("chat-user-input");
-  const send  = () => {
-    const txt = input.value.trim();
-    if (!txt) return;
-    addMessage(txt, "user");
-    input.value = "";
-    handleInput(txt.toLowerCase());
-  };
-  document.getElementById("chat-send-btn").onclick = send;
-  input.addEventListener("keydown", e => { if (e.key === "Enter") send(); });
-}
-
-function scrollTo(id) {
-  setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }), 600);
-}
-
-function handleInput(input) {
-  let response = "Je n’ai pas bien compris… Peux-tu reformuler ?";
-  let quick = [];
-
-  if (/relax|détente|stress|174|285|396/.test(input)) {
-    response = "Pour te relaxer :<br>• 174 Hz → détente physique<br>• 285 Hz → équilibre<br>• 396 Hz → libération du stress";
-    quick = [{ label: "Aller à Relaxation", value: "goto_relax" }];
-    scrollTo("relax");
-  }
-  else if (/concentr|focus|étud|travail|40 ?hz|gamma/.test(input)) {
-    response = "Pour la concentration, les fréquences 40 Hz Gamma sont excellentes !<br>Tu as 3 pistes dans la section Concentration.";
-    quick = [{ label: "Aller à Concentration", value: "goto_focus" }];
-    scrollTo("focus");
-  }
-  else if (/médit|963|profond/.test(input)) {
-    response = "La fréquence 963 Hz est parfaite pour la méditation profonde.<br>Rendez-vous dans la section Méditation.";
-    quick = [{ label: "Aller à Méditation", value: "goto_meditation" }];
-    scrollTo("meditation");
-  }
-  else if (/salut|bonjour|hello|cc/.test(input)) {
-    response = "Salut ! Je suis ton Coach MEGABRAIN. Que veux-tu faire aujourd’hui ?";
-    quick = [
-      { label: "Me relaxer", value: "relax" },
-      { label: "Me concentrer", value: "focus" },
-      { label: "Méditer", value: "meditate" }
-    ];
-  }
-  else if (/merci|super|top|genial/.test(input)) {
-    response = "Avec plaisir ! Profite bien des fréquences";
-  }
-
-  setTimeout(() => {
-    addMessage(response, "bot");
-    if (quick.length) setQuickButtons(quick);
-  }, 500);
-}
-
+// Démarrage chatbot
 function startChat() {
   chatMessages.innerHTML = "";
-  addMessage("Bonjour ! Je suis ton <strong>Coach MEGABRAIN</strong><br>Comment puis-je t’aider ?");
+  chatState = "start";
+
+  addChatMessage(
+    "Bonjour, je suis ton <strong>Coach MEGABRAIN</strong> 🧠.<br>Comment puis-je t’aider aujourd’hui ?"
+  );
+
   setQuickButtons([
     { label: "Me relaxer", value: "relax" },
     { label: "Me concentrer", value: "focus" },
-    { label: "Méditer", value: "meditate" }
+    { label: "Méditer", value: "meditate" },
+    { label: "Comprendre les fréquences", value: "explain" },
   ]);
-  createInput();
+}
+
+
+// Gestion des choix utilisateur
+function handleChoice(choice) {
+  addChatMessage(choice, "user");
+
+  if (choice === "relax") {
+    addChatMessage(
+      "Pour la <strong>relaxation</strong>, commence par 174 Hz ou 285 Hz."
+    );
+    setQuickButtons([
+      { label: "Voir Relaxation", value: "goto_relax" },
+      { label: "Autre", value: "restart" },
+    ]);
+  }
+
+  else if (choice === "focus") {
+    addChatMessage(
+      "Pour la <strong>concentration</strong>, les 40 Hz Gamma sont excellents."
+    );
+    setQuickButtons([
+      { label: "Voir Focus", value: "goto_focus" },
+      { label: "Autre", value: "restart" },
+    ]);
+  }
+
+  else if (choice === "meditate") {
+    addChatMessage(
+      "Pour la <strong>méditation</strong>, essaie 963 Hz."
+    );
+    setQuickButtons([
+      { label: "Voir Méditation", value: "goto_meditation" },
+      { label: "Autre", value: "restart" },
+    ]);
+  }
+
+  else if (choice === "explain") {
+    addChatMessage(
+      "Voici un résumé clair des fréquences :<br>" +
+        "• 174 Hz : détente profonde<br>" +
+        "• 285 Hz : harmonie<br>" +
+        "• 396 Hz : libération émotionnelle<br>" +
+        "• 40 Hz : concentration<br>" +
+        "• 963 Hz : méditation intense"
+    );
+    setQuickButtons([
+      { label: "Relaxation", value: "relax" },
+      { label: "Concentration", value: "focus" },
+      { label: "Méditation", value: "meditate" },
+    ]);
+  }
+
+  // Redirections
+  else if (choice === "goto_relax") {
+    document.getElementById("relax")?.scrollIntoView({ behavior: "smooth" });
+    addChatMessage("Je t’ai emmené à la section Relaxation.");
+    setQuickButtons([{ label: "Fermer", value: "close" }]);
+  }
+  else if (choice === "goto_focus") {
+    document.getElementById("focus")?.scrollIntoView({ behavior: "smooth" });
+    addChatMessage("Section Concentration affichée.");
+    setQuickButtons([{ label: "Fermer", value: "close" }]);
+  }
+  else if (choice === "goto_meditation") {
+    document.getElementById("meditation")?.scrollIntoView({ behavior: "smooth" });
+    addChatMessage("Section Méditation affichée.");
+    setQuickButtons([{ label: "Fermer", value: "close" }]);
+  }
+
+  else if (choice === "close") {
+    chatWindow.style.display = "none";
+  }
+  else if (choice === "restart") {
+    startChat();
+  }
 }
