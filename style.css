@@ -88,6 +88,71 @@ nav a:hover{
 }
 
 /* ------------------------------------------- */
+/*              MENU ORBE FLOATING            */
+/* ------------------------------------------- */
+
+#orb-menu {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 2000000;
+}
+
+#orb-toggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #0b0c10ee;
+    border: 3px solid var(--vert);
+    color: var(--vert);
+    font-size: 2em;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 14px #66ff9966;
+}
+#orb-toggle:hover {
+    background: var(--vert);
+    color: var(--noir);
+    transform: scale(1.1);
+}
+
+/* Conteneur des liens */
+.orb-links {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    background: rgba(10,10,12,0.95);
+    padding: 14px;
+    border-radius: 12px;
+    border: 2px solid var(--vert);
+    box-shadow: 0 0 20px #000;
+    backdrop-filter: blur(4px);
+}
+
+#orb-menu.show .orb-links {
+    display: flex;
+}
+
+/* Liens */
+.orb-links a {
+    padding: 10px 14px;
+    background: #1f2833;
+    color: var(--vert);
+    border-radius: 10px;
+    border: 1px solid #66ff9955;
+    text-decoration: none;
+    font-weight: 600;
+    transition: .25s;
+}
+.orb-links a:hover {
+    background: var(--vert);
+    color: var(--noir);
+}
+
+/* ------------------------------------------- */
 /*                   BOUTONS                   */
 /* ------------------------------------------- */
 button{
@@ -144,9 +209,6 @@ button:hover{
     background:#66ff9925;
     transform:translateY(-4px);
     box-shadow:0 10px 26px #66ff9930;
-}
-.video-item h3{
-    margin-top:0;
 }
 
 /* ------------------------------------------- */
@@ -235,7 +297,7 @@ button:hover{
 }
 
 /* ------------------------------------------- */
-/*    SELECTEUR DE LANGUE (FR / ES / EN)       */
+/*    SELECTEUR DE LANGUE                      */
 /* ------------------------------------------- */
 .lang-selector{
     position:fixed;
@@ -263,7 +325,7 @@ button:hover{
 }
 
 /* ------------------------------------------- */
-/*     BLOCS INTRO + DONATE SECTION            */
+/*       SECTIONS INTRO + DONATE               */
 /* ------------------------------------------- */
 .intro{
     background:linear-gradient(135deg,#1a1a1a,#0f0f0f);
@@ -275,22 +337,7 @@ button:hover{
     box-shadow:0 0 30px #66ff991a;
 }
 
-.donate a button{
-    background:#009cde;
-    border:none;
-    color:white;
-    padding:16px 40px;
-    font-size:1.1em;
-    border-radius:14px;
-}
-.donate p small{
-    color:#aaa;
-    font-size:.9em;
-}
-
-/* ------------------------------------------- */
-/*       BLOC GOFUNDME PERSONNALISÉ           */
-/* ------------------------------------------- */
+/* GOFUNDME */
 #gofund-container{
     margin-top:30px;
     margin-bottom:40px;
@@ -299,19 +346,6 @@ button:hover{
     border:1px solid #ff6f91;
     box-shadow:0 0 22px rgba(255,111,145,0.4);
     padding:20px 18px 26px;
-}
-
-#gofund-container h3{
-    margin-top:0;
-    color:#ffb3c7;
-    text-shadow:0 0 10px rgba(255,111,145,0.5);
-}
-
-.gofund-text{
-    max-width:850px;
-    margin:10px auto 20px;
-    font-size:0.95em;
-    color:#ffeef4;
 }
 
 .gofund-btn{
@@ -326,85 +360,11 @@ button:hover{
     transition:.25s;
 }
 .gofund-btn:hover{
-    transform:scale(1.05) translateY(-1px);
-    box-shadow:0 0 26px rgba(255,204,112,0.9);
+    transform:scale(1.05);
 }
-
-/* ======================= */
-/*   MENU ORBE (TON HTML)  */
-/* ======================= */
-
-#orb-menu {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 999999;
-}
-
-#orb-toggle {
-    width: 60px;
-    height: 60px;
-    border-radius: 12px;
-    background: #0b0c10ee;
-    border: 3px solid var(--vert);
-    color: var(--vert);
-    font-size: 2em;
-    cursor: pointer;
-    transition: .3s;
-    box-shadow: 0 0 14px #66ff9966;
-}
-#orb-toggle:hover {
-    background: var(--vert);
-    color: var(--noir);
-    transform: scale(1.1);
-}
-
-/* Fenêtre invisible au départ */
-#orb-menu .orb-links {
-    display: none;                /* ← réglé : menu caché */
-    position: absolute;
-    top: 80px;
-    right: 0;
-    width: 280px;
-    background: rgba(10, 15, 20, 0.97);
-    border: 2px solid var(--vert);
-    border-radius: 15px;
-    padding: 18px;
-    box-shadow: 0 0 30px #000;
-    backdrop-filter: blur(4px);
-}
-
-/* Liens internes */
-#orb-menu .orb-links a {
-    display: block;
-    padding: 10px;
-    margin: 6px 0;
-    background: #1f2833;
-    border-radius: 10px;
-    color: var(--vert);
-    text-decoration: none;
-    border: 1px solid #66ff9955;
-    transition: .3s;
-}
-#orb-menu .orb-links a:hover {
-    background: var(--vert);
-    color: var(--noir);
-}
-
-/* Effet d'apparition */
-#orb-menu.show .orb-links {
-    display: block;
-    animation: fadeIn .3s ease-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
 
 /* ------------------------------------------- */
-/*           CHATBOT PÉDAGOGIQUE               */
+/*               CHATBOT FIXE                  */
 /* ------------------------------------------- */
 #chatbot-toggle{
     position:fixed;
@@ -419,14 +379,7 @@ button:hover{
     cursor:pointer;
     z-index:999998;
     font-weight:bold;
-    font-size:0.95em;
-    box-shadow:0 0 15px #66ff9955;
 }
-#chatbot-toggle:hover{
-    background:var(--vert);
-    color:var(--noir);
-}
-
 #chatbot-window{
     position:fixed;
     left:20px;
@@ -443,80 +396,14 @@ button:hover{
     z-index:999998;
 }
 
-#chatbot-header{
-    background:var(--gris);
-    padding:8px 10px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    border-bottom:1px solid #66ff9940;
-}
-#chatbot-header span{
-    font-size:0.9em;
-}
-#chatbot-header button{
-    background:transparent;
-    border:none;
-    color:var(--vert);
-    font-size:1.2em;
-    cursor:pointer;
-    padding:0 4px;
-}
-
-#chatbot-messages{
-    padding:10px;
-    height:240px;
-    overflow-y:auto;
-    text-align:left;
-    font-size:0.9em;
-}
-
-.chat-msg{
-    margin:6px 0;
-    line-height:1.4;
-}
-.chat-msg.bot{
-    color:#e0ffe8;
-}
-.chat-msg.user{
-    text-align:right;
-    color:#b0ffcf;
-}
-
-#chatbot-quick{
-    padding:8px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px;
-    justify-content:center;
-    border-top:1px solid #66ff9940;
-}
-
-.chat-quick-btn{
-    background:#1f2833;
-    border:1px solid #66ff99;
-    color:var(--vert);
-    border-radius:999px;
-    padding:4px 10px;
-    font-size:0.8em;
-    cursor:pointer;
-}
-.chat-quick-btn:hover{
-    background:var(--vert);
-    color:var(--noir);
-}
-
 /* ------------------------------------------- */
-/*          PAGE DES LIVRES (livres.html)      */
+/*     LIVRES : PAGE COLLECTION                */
 /* ------------------------------------------- */
-
-/* Corps spécifique pour éviter tout zoom ou bug */
 body.livres-page{
     -webkit-text-size-adjust:100%;
     text-size-adjust:100%;
 }
 
-/* Grille des livres : cartes moyennes */
 .grid-livres{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
@@ -537,11 +424,6 @@ body.livres-page{
     border:1px solid #66ff9955;
     box-shadow:0 0 15px #0008;
 }
-.livre-card:hover{
-    background:#66ff9920;
-    transform:translateY(-4px);
-    box-shadow:0 10px 24px #000;
-}
 
 .livre-card img{
     width:100%;
@@ -549,54 +431,6 @@ body.livres-page{
     object-fit:cover;
     border-radius:10px;
     margin-bottom:8px;
-    box-shadow:0 0 12px #000a;
-}
-.livre-card h3{
-    font-size:0.95em;
-    margin:4px 0 0;
-}
-
-/* ------------------------------------------- */
-/*     PAGE LIVRE INDIVIDUEL (page-livre)      */
-/* ------------------------------------------- */
-.page-livre{
-    background:linear-gradient(135deg,#1a1a1a,#0f0f0f);
-    padding:25px;
-    border-radius:18px;
-    max-width:850px;
-    margin:40px auto;
-    border:1px solid #66ff9960;
-    box-shadow:0 0 30px #000;
-}
-.page-livre h1{
-    font-size:2em;
-    margin-top:0;
-}
-.page-livre img{
-    width:100%;
-    max-height:460px;
-    object-fit:cover;
-    border-radius:16px;
-    margin-bottom:20px;
-    box-shadow:0 0 20px #000;
-}
-
-.bouton-retour{
-    display:inline-block;
-    margin-top:15px;
-    padding:10px 20px;
-    background:var(--gris);
-    border:2px solid var(--vert);
-    border-radius:12px;
-    color:var(--vert);
-    text-decoration:none;
-    font-size:1em;
-    transition:.3s;
-}
-.bouton-retour:hover{
-    background:var(--vert);
-    color:var(--noir);
-    transform:scale(1.05);
 }
 
 /* ------------------------------------------- */
@@ -617,23 +451,8 @@ footer{
     h1{
         font-size:2.4em;
     }
-    .container{
-        padding:18px 12px;
-    }
-    #chatbot-window{
-        width:90vw;
-        left:5vw;
-    }
     #orb-menu{
-        top:90px;
-        right:10px;
-    }
-    #social-buttons{
-        right:10px;
-    }
-    #music-control{
-        right:10px;
+        top:80px;
+        left:10px;
     }
 }
-
-
