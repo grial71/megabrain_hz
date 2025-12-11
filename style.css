@@ -331,38 +331,37 @@ button:hover{
 }
 
 /* ======================= */
-/*    MENU FLOTTANT        */
+/*   MENU ORBE (TON HTML)  */
 /* ======================= */
 
-#menu-container {
+#orb-menu {
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 1000000;
+    z-index: 999999;
 }
 
-/* Bouton du menu */
-#menu-toggle {
+#orb-toggle {
     width: 60px;
     height: 60px;
     border-radius: 12px;
     background: #0b0c10ee;
     border: 3px solid var(--vert);
     color: var(--vert);
-    font-size: 2.2em;
+    font-size: 2em;
     cursor: pointer;
     transition: .3s;
     box-shadow: 0 0 14px #66ff9966;
 }
-#menu-toggle:hover {
+#orb-toggle:hover {
     background: var(--vert);
     color: var(--noir);
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
-/* Fenêtre du menu */
-#menu-panel {
-    display: none; /* ← IMPORTANT : empêche ton bug */
+/* Fenêtre invisible au départ */
+#orb-menu .orb-links {
+    display: none;                /* ← réglé : menu caché */
     position: absolute;
     top: 80px;
     right: 0;
@@ -373,20 +372,10 @@ button:hover{
     padding: 18px;
     box-shadow: 0 0 30px #000;
     backdrop-filter: blur(4px);
-    z-index: 1000001;
 }
 
-#menu-panel h3 {
-    margin: 0 0 12px 0;
-    text-align: center;
-    color: var(--vert);
-    font-size: 1.3em;
-    border-bottom: 1px solid #66ff99aa;
-    padding-bottom: 10px;
-}
-
-/* Liens du menu */
-#menu-panel a {
+/* Liens internes */
+#orb-menu .orb-links a {
     display: block;
     padding: 10px;
     margin: 6px 0;
@@ -394,29 +383,25 @@ button:hover{
     border-radius: 10px;
     color: var(--vert);
     text-decoration: none;
-    font-size: 1.05em;
     border: 1px solid #66ff9955;
     transition: .3s;
 }
-#menu-panel a:hover {
+#orb-menu .orb-links a:hover {
     background: var(--vert);
     color: var(--noir);
 }
 
-/* Bouton fermer */
-#menu-close {
-    margin-top: 12px;
-    background: transparent;
-    border: none;
-    color: var(--vert);
-    font-size: 1.5em;
-    cursor: pointer;
-    width: 100%;
-    text-align: center;
+/* Effet d'apparition */
+#orb-menu.show .orb-links {
+    display: block;
+    animation: fadeIn .3s ease-out;
 }
-#menu-close:hover {
-    color: white;
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
+
 
 /* ------------------------------------------- */
 /*           CHATBOT PÉDAGOGIQUE               */
@@ -650,4 +635,5 @@ footer{
         right:10px;
     }
 }
+
 
