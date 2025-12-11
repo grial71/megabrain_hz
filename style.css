@@ -5,7 +5,7 @@
 }
 
 /* ------------------------------------------- */
-/*      FOND GLOBAL + ANIMATION ÉTOILES       */
+/*   FOND GLOBAL + ANIMATIONS ÉTOILES          */
 /* ------------------------------------------- */
 body{
     margin:0;
@@ -24,6 +24,7 @@ body{
     overflow-x:hidden;
 }
 
+/* Étoiles animées */
 .stars{
     position:fixed;
     top:0; left:0;
@@ -40,7 +41,7 @@ body{
 }
 
 /* ------------------------------------------- */
-/*                   HEADER                     */
+/*                  HEADER                     */
 /* ------------------------------------------- */
 header{
     background:var(--gris);
@@ -64,42 +65,46 @@ header::before{
 }
 
 h1{
-    font-size:3.8em;
+    font-size:3.2em;
     margin:0;
     text-shadow:0 0 25px #66ff9940;
 }
 
+nav{
+    margin-top:15px;
+}
 nav a{
     color:var(--vert);
-    margin:0 20px;
+    margin:0 15px;
     font-weight:bold;
     text-decoration:none;
-    padding:12px 24px;
+    padding:10px 20px;
     border-radius:10px;
     transition:.3s;
+    background:transparent;
 }
 nav a:hover{
     background:#66ff9930;
 }
 
 /* ------------------------------------------- */
-/*                 BOUTONS                     */
+/*                   BOUTONS                   */
 /* ------------------------------------------- */
 button{
     background:var(--gris);
     color:var(--vert);
     border:2px solid var(--vert);
-    padding:16px 32px;
-    margin:12px;
-    font-size:1.25em;
+    padding:12px 26px;
+    margin:10px;
+    font-size:1.05em;
     border-radius:14px;
     cursor:pointer;
-    transition:.4s;
+    transition:.3s;
 }
 button:hover{
     background:var(--vert);
     color:var(--noir);
-    transform:scale(1.07);
+    transform:scale(1.03);
 }
 
 /* ------------------------------------------- */
@@ -108,36 +113,40 @@ button:hover{
 .container{
     max-width:1100px;
     margin:0 auto;
-    padding:25px;
+    padding:25px 20px;
 }
 
 .section{
-    margin:70px 0;
+    margin:60px 0;
 }
 .section h2{
-    font-size:2.2em;
+    font-size:2.1em;
     color:#66ff99;
     text-shadow:0 0 15px #66ff9960;
+    margin-bottom:25px;
 }
 
 /* ------------------------------------------- */
-/*              BLOC VIDÉO YOUTUBE             */
+/*                 VIDÉOS YOUTUBE              */
 /* ------------------------------------------- */
 .video-item{
     background:var(--gris);
-    padding:22px;
-    margin:18px auto;
+    padding:18px;
+    margin:16px auto;
     max-width:750px;
     border-radius:14px;
     cursor:pointer;
-    transition:.4s;
-    border-left:6px solid var(--vert);
-    box-shadow:0 0 20px #0006;
+    transition:.3s;
+    border-left:5px solid var(--vert);
+    box-shadow:0 0 18px #0008;
 }
 .video-item:hover{
     background:#66ff9925;
-    transform:translateY(-6px);
-    box-shadow:0 10px 30px #66ff9930;
+    transform:translateY(-4px);
+    box-shadow:0 10px 26px #66ff9930;
+}
+.video-item h3{
+    margin-top:0;
 }
 
 /* ------------------------------------------- */
@@ -160,6 +169,7 @@ button:hover{
     height:60vh;
     border:4px solid var(--vert);
     border-radius:18px;
+    box-shadow:0 0 25px #000;
 }
 
 .modal > a{
@@ -173,7 +183,7 @@ button:hover{
 }
 
 /* ------------------------------------------- */
-/*         MUSIQUE DE FOND - BOUTON            */
+/*            MUSIQUE DE FOND                  */
 /* ------------------------------------------- */
 #music-control{
     position:fixed;
@@ -182,10 +192,10 @@ button:hover{
     background:#1f2833cc;
     border:2px solid var(--vert);
     color:var(--vert);
-    padding:12px 16px;
+    padding:10px 14px;
     border-radius:50px;
     cursor:pointer;
-    z-index:999999;
+    z-index:999998;
     font-size:1.5em;
     box-shadow:0 0 15px #66ff9955;
 }
@@ -196,7 +206,7 @@ button:hover{
 }
 
 /* ------------------------------------------- */
-/*           RÉSEAUX SOCIAUX                   */
+/*      RÉSEAUX SOCIAUX (BOUTONS FIXES)        */
 /* ------------------------------------------- */
 #social-buttons{
     position:fixed;
@@ -204,19 +214,19 @@ button:hover{
     right:20px;
     display:flex;
     flex-direction:column;
-    gap:12px;
-    z-index:999999;
+    gap:10px;
+    z-index:999997;
 }
 
 .social-btn{
-    padding:10px 18px;
+    padding:8px 16px;
     background:#1f2833cc;
     border:2px solid var(--vert);
     color:var(--vert);
     text-decoration:none;
     font-weight:bold;
     border-radius:12px;
-    font-size:1em;
+    font-size:0.9em;
     transition:.3s;
 }
 .social-btn:hover{
@@ -225,7 +235,176 @@ button:hover{
 }
 
 /* ------------------------------------------- */
-/*              CHATBOT PÉDAGOGIQUE            */
+/*    SELECTEUR DE LANGUE (FR / ES / EN)       */
+/* ------------------------------------------- */
+.lang-selector{
+    position:fixed;
+    top:15px;
+    right:15px;
+    z-index:999996;
+    background:#0008;
+    padding:6px 10px;
+    border-radius:30px;
+    border:2px solid var(--vert);
+}
+.lang-selector button{
+    margin:0 4px;
+    padding:6px 10px;
+    font-size:.8em;
+    background:transparent;
+    color:var(--vert);
+    border:none;
+    cursor:pointer;
+}
+.lang-selector button.active{
+    color:#fff;
+    background:var(--vert);
+    border-radius:20px;
+}
+
+/* ------------------------------------------- */
+/*     BLOCS INTRO + DONATE SECTION            */
+/* ------------------------------------------- */
+.intro{
+    background:linear-gradient(135deg,#1a1a1a,#0f0f0f);
+    padding:25px;
+    border-radius:16px;
+    margin:35px auto;
+    max-width:1000px;
+    border:1px solid #66ff9960;
+    box-shadow:0 0 30px #66ff991a;
+}
+
+.donate a button{
+    background:#009cde;
+    border:none;
+    color:white;
+    padding:16px 40px;
+    font-size:1.1em;
+    border-radius:14px;
+}
+.donate p small{
+    color:#aaa;
+    font-size:.9em;
+}
+
+/* ------------------------------------------- */
+/*       BLOC GOFUNDME PERSONNALISÉ           */
+/* ------------------------------------------- */
+#gofund-container{
+    margin-top:30px;
+    margin-bottom:40px;
+    background:rgba(11,12,16,0.9);
+    border-radius:18px;
+    border:1px solid #ff6f91;
+    box-shadow:0 0 22px rgba(255,111,145,0.4);
+    padding:20px 18px 26px;
+}
+
+#gofund-container h3{
+    margin-top:0;
+    color:#ffb3c7;
+    text-shadow:0 0 10px rgba(255,111,145,0.5);
+}
+
+.gofund-text{
+    max-width:850px;
+    margin:10px auto 20px;
+    font-size:0.95em;
+    color:#ffeef4;
+}
+
+.gofund-btn{
+    display:inline-block;
+    padding:12px 26px;
+    border-radius:999px;
+    background:linear-gradient(135deg,#ff6f91,#ffcc70);
+    color:#2b0b18;
+    font-weight:bold;
+    text-decoration:none;
+    box-shadow:0 0 20px rgba(255,111,145,0.7);
+    transition:.25s;
+}
+.gofund-btn:hover{
+    transform:scale(1.05) translateY(-1px);
+    box-shadow:0 0 26px rgba(255,204,112,0.9);
+}
+
+/* ------------------------------------------- */
+/*      MENU ORBE MULTI-LIENS (orb-menu)       */
+/* ------------------------------------------- */
+#orb-menu{
+    position:fixed;
+    top:120px;
+    right:20px;
+    z-index:999995;
+}
+
+#orb-toggle{
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    border:2px solid var(--vert);
+    background:#0b0c10cc;
+    color:var(--vert);
+    font-size:1.4em;
+    cursor:pointer;
+    box-shadow:0 0 14px #66ff9955;
+    transition:.3s;
+    padding:0;
+}
+#orb-toggle:hover{
+    background:var(--vert);
+    color:var(--noir);
+    transform:scale(1.05);
+}
+
+.orb-links{
+    position:relative;
+    width:0;
+    height:0;
+}
+
+.orb-item{
+    position:absolute;
+    right:0;
+    top:0;
+    transform:translate(0,0);
+    opacity:0;
+    pointer-events:none;
+    padding:6px 12px;
+    background:#1f2833f0;
+    border-radius:999px;
+    border:1px solid var(--vert);
+    color:var(--vert);
+    text-decoration:none;
+    font-size:0.8em;
+    white-space:nowrap;
+    box-shadow:0 0 12px #000;
+    transition:.35s;
+}
+
+/* Positions "ouvrables" en arc de cercle */
+#orb-menu.open .orb-item{
+    opacity:1;
+    pointer-events:auto;
+}
+
+#orb-menu.open .orb-pos-1{ transform:translate(-150%, -180%); }
+#orb-menu.open .orb-pos-2{ transform:translate(-210%, -60%); }
+#orb-menu.open .orb-pos-3{ transform:translate(-220%, 60%); }
+#orb-menu.open .orb-pos-4{ transform:translate(-150%, 180%); }
+#orb-menu.open .orb-pos-5{ transform:translate(-40%, 220%); }
+#orb-menu.open .orb-pos-6{ transform:translate(70%, 160%); }
+#orb-menu.open .orb-pos-7{ transform:translate(95%, 30%); }
+
+.orb-item:hover{
+    background:var(--vert);
+    color:var(--noir);
+}
+
+/* ------------------------------------------- */
+/*           CHATBOT PÉDAGOGIQUE               */
 /* ------------------------------------------- */
 #chatbot-toggle{
     position:fixed;
@@ -235,11 +414,13 @@ button:hover{
     background:#1f2833cc;
     border:2px solid var(--vert);
     color:var(--vert);
-    padding:12px 16px;
+    padding:10px 14px;
     border-radius:50px;
     cursor:pointer;
-    z-index:999999;
+    z-index:999998;
     font-weight:bold;
+    font-size:0.95em;
+    box-shadow:0 0 15px #66ff9955;
 }
 #chatbot-toggle:hover{
     background:var(--vert);
@@ -259,41 +440,65 @@ button:hover{
     border:2px solid var(--vert);
     border-radius:16px;
     overflow:hidden;
-    z-index:999999;
+    z-index:999998;
 }
 
 #chatbot-header{
     background:var(--gris);
-    padding:10px;
+    padding:8px 10px;
     display:flex;
     justify-content:space-between;
     align-items:center;
+    border-bottom:1px solid #66ff9940;
+}
+#chatbot-header span{
+    font-size:0.9em;
+}
+#chatbot-header button{
+    background:transparent;
+    border:none;
+    color:var(--vert);
+    font-size:1.2em;
+    cursor:pointer;
+    padding:0 4px;
 }
 
 #chatbot-messages{
     padding:10px;
-    height:260px;
+    height:240px;
     overflow-y:auto;
     text-align:left;
+    font-size:0.9em;
 }
 
-.chat-msg.bot{color:#e0ffe8;}
-.chat-msg.user{text-align:right; color:#b0ffcf;}
+.chat-msg{
+    margin:6px 0;
+    line-height:1.4;
+}
+.chat-msg.bot{
+    color:#e0ffe8;
+}
+.chat-msg.user{
+    text-align:right;
+    color:#b0ffcf;
+}
 
 #chatbot-quick{
-    padding:10px;
+    padding:8px;
     display:flex;
     flex-wrap:wrap;
     gap:6px;
     justify-content:center;
+    border-top:1px solid #66ff9940;
 }
 
 .chat-quick-btn{
     background:#1f2833;
     border:1px solid #66ff99;
     color:var(--vert);
-    border-radius:12px;
-    padding:6px 10px;
+    border-radius:999px;
+    padding:4px 10px;
+    font-size:0.8em;
     cursor:pointer;
 }
 .chat-quick-btn:hover{
@@ -302,103 +507,131 @@ button:hover{
 }
 
 /* ------------------------------------------- */
-/*   PAGE COLLECTION LIVRES (fix zoom)         */
+/*          PAGE DES LIVRES (livres.html)      */
 /* ------------------------------------------- */
-body.livres-page {
-    padding: 0;
-    margin: 0;
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
+
+/* Corps spécifique pour éviter tout zoom ou bug */
+body.livres-page{
+    -webkit-text-size-adjust:100%;
+    text-size-adjust:100%;
 }
 
-/* Grille livres */
-body.livres-page .grid-livres{
+/* Grille des livres : cartes moyennes */
+.grid-livres{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:30px;
-    margin-top:40px;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:25px;
+    margin-top:30px;
 }
 
-body.livres-page .livre-card{
-    background:var(--gris);
-    border-radius:16px;
-    padding:18px;
+.livre-card{
+    background:#1f2833ee;
+    border-radius:14px;
+    padding:12px;
     text-decoration:none;
     color:var(--vert);
     display:flex;
     flex-direction:column;
     align-items:center;
-    transition:.35s;
-    border-left:6px solid var(--vert);
-    box-shadow:0 0 20px #0007;
+    transition:.3s;
+    border:1px solid #66ff9955;
+    box-shadow:0 0 15px #0008;
 }
-body.livres-page .livre-card:hover{
-    background:#66ff9930;
-    transform:translateY(-6px) scale(1.03);
+.livre-card:hover{
+    background:#66ff9920;
+    transform:translateY(-4px);
+    box-shadow:0 10px 24px #000;
 }
 
-body.livres-page .livre-card img{
+.livre-card img{
     width:100%;
-    height:280px;
+    height:220px;
     object-fit:cover;
-    border-radius:12px;
+    border-radius:10px;
+    margin-bottom:8px;
+    box-shadow:0 0 12px #000a;
+}
+.livre-card h3{
+    font-size:0.95em;
+    margin:4px 0 0;
 }
 
-/* Page individuelle */
+/* ------------------------------------------- */
+/*     PAGE LIVRE INDIVIDUEL (page-livre)      */
+/* ------------------------------------------- */
 .page-livre{
-    max-width:750px;
-    margin:40px auto;
+    background:linear-gradient(135deg,#1a1a1a,#0f0f0f);
     padding:25px;
-    background:#1a1a1acc;
-    border-radius:16px;
+    border-radius:18px;
+    max-width:850px;
+    margin:40px auto;
     border:1px solid #66ff9960;
+    box-shadow:0 0 30px #000;
 }
-
+.page-livre h1{
+    font-size:2em;
+    margin-top:0;
+}
 .page-livre img{
     width:100%;
+    max-height:460px;
+    object-fit:cover;
     border-radius:16px;
     margin-bottom:20px;
+    box-shadow:0 0 20px #000;
 }
 
 .bouton-retour{
+    display:inline-block;
+    margin-top:15px;
+    padding:10px 20px;
+    background:var(--gris);
+    border:2px solid var(--vert);
+    border-radius:12px;
     color:var(--vert);
     text-decoration:none;
-    font-size:1.2em;
+    font-size:1em;
+    transition:.3s;
+}
+.bouton-retour:hover{
+    background:var(--vert);
+    color:var(--noir);
+    transform:scale(1.05);
 }
 
-#gofund-container {
-    margin-top: 40px;
-    padding: 25px;
-    background: #1a1a1a99;
-    border: 1px solid var(--vert);
-    border-radius: 16px;
-    box-shadow: 0 0 25px #66ff9933;
+/* ------------------------------------------- */
+/*                 FOOTER                      */
+/* ------------------------------------------- */
+footer{
+    margin-top:40px;
+    margin-bottom:10px;
+    font-size:0.9em;
+    color:#ccffdd;
+    text-shadow:0 0 6px #000;
 }
 
-.gofund-text {
-    font-size: 1.1em;
-    color: var(--vert);
-    margin-bottom: 20px;
-    line-height: 1.6;
+/* ------------------------------------------- */
+/*              RESPONSIVE MOBILE              */
+/* ------------------------------------------- */
+@media (max-width:768px){
+    h1{
+        font-size:2.4em;
+    }
+    .container{
+        padding:18px 12px;
+    }
+    #chatbot-window{
+        width:90vw;
+        left:5vw;
+    }
+    #orb-menu{
+        top:90px;
+        right:10px;
+    }
+    #social-buttons{
+        right:10px;
+    }
+    #music-control{
+        right:10px;
+    }
 }
-
-.gofund-btn {
-    display: inline-block;
-    padding: 16px 32px;
-    background: #00c47a;
-    color: #0b0c10;
-    font-size: 1.3em;
-    font-weight: bold;
-    border-radius: 12px;
-    text-decoration: none;
-    transition: .3s;
-    box-shadow: 0 0 15px #00c47a55;
-}
-
-.gofund-btn:hover {
-    background: #66ff99;
-    transform: scale(1.05);
-    color: #0b0c10;
-}
-
-
